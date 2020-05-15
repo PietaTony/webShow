@@ -6,11 +6,11 @@
 		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="bg-dark">
 	<div class="card" style="width: 18rem;">
 		<div class="card-body">
-			<h3 class="card-title"> {{.name}}</h3>
-			<p class="card-text">{{.time}}</p>
+			<h1 class="card-title"> {{.name}}</h1>
+			<p class="card-text">登入時間：{{.time}}</p>
 			<form id="postForm">
 				<div class="form-group">
 					<label for="url">url:</label>
@@ -36,7 +36,7 @@
 	postFrom.submit((e) => {
 		e.preventDefault();
 
-		$.post($('#url')[0].value,
+		$.get($('#url')[0].value,
 			{
 				key1: $('#key1')[0].value,
 				key2: $('#key2')[0].value,
@@ -44,3 +44,11 @@
 		);
 	})
 </script>
+
+<style>
+	.card {
+		margin: 0 auto;
+		float: none;
+		margin-bottom: 10px;
+	}
+</style>
