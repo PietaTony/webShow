@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+		integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="card" style="width: 18rem;">
+		<div class="card-body">
+			<h3 class="card-title"> {{.name}}</h3>
+			<p class="card-text">{{.time}}</p>
+			<form id="postForm">
+				<div class="form-group">
+					<label for="url">url:</label>
+					<input type="text" class="form-control" id="url">
+				</div>
+				<div class="form-group">
+					<label for="key1">key1:</label>
+					<input type="text" class="form-control" id="key1">
+				</div>
+				<div class="form-group">
+					<label for="key2">key2:</label>
+					<input type="text" class="form-control" id="key2">
+				</div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+</body>
+
+</html>
+<script type="text/javascript">
+	postFrom = $('#postForm');
+	postFrom.submit((e) => {
+		e.preventDefault();
+
+		$.post($('#url')[0].value,
+			{
+				key1: $('#key1')[0].value,
+				key2: $('#key2')[0].value,
+			}
+		);
+	})
+</script>

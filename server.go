@@ -14,12 +14,15 @@ func main() {
 	port := ":8000"
 	url := "http://" + "localhost" + port + "/welcome"
 	router := gin.Default()
+	router.LoadHTMLGlob("templates/*")
 
 	router.GET("/welcome", func(c *gin.Context) {
 		name := c.Query("name")
 		time := c.Query("time")
-		message := "Welcome " + name + ", at " + time + "."
-		c.String(http.StatusOK, message)
+		c.HTML(http.StatusOK, "welcome.html", gin.H{
+			"name": name,
+			"time": time,
+		})
 	})
 
 	router.GET("/v1/welcome", func(c *gin.Context) {
